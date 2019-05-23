@@ -3,6 +3,8 @@ import './App.css';
 
 import dummyData from './dummy-data'
 
+import SearchBar from './components/SearchBar'
+
 class App extends React.Component {
   construtor() {
     this.state = {
@@ -18,7 +20,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <h1>Instagram</h1>
+      <div className="App">
+
+        <SearchBar />
+      </div>
     )
   }
 }
