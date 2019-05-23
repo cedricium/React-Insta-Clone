@@ -1,8 +1,14 @@
 import React from 'react'
 import './index.css'
 
+import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { Heart, MessageCircle } from 'react-feather'
 import CommentSection from '../CommentSection'
+
+dayjs.extend(customParseFormat)
+dayjs.extend(relativeTime)
 
 const PostHeader = (props) => {
   const { thumbnailUrl, username } = props
@@ -32,6 +38,9 @@ const PostMeta = (props) => {
     timestamp
   } = props
 
+  const postedTime = dayjs(timestamp, 'MMMM Do YYYY, hh:mm:ss a')
+  const postedTimeFromNow = postedTime.fromNow()
+
   return (
     <footer className="post-footer">
       <div className="meta">
@@ -41,7 +50,7 @@ const PostMeta = (props) => {
       </div>
       <CommentSection comments={comments} />
       <div className="timestamp">
-        <small>{timestamp}</small>
+        <small>{postedTimeFromNow}</small>
       </div>
     </footer>
   )
