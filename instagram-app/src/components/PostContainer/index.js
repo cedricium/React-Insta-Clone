@@ -1,5 +1,7 @@
 import React from 'react'
 
+import CommentSection from '../CommentSection'
+
 const PostHeader = (props) => {
   const { thumbnailUrl, username } = props
   
@@ -35,11 +37,7 @@ const PostMeta = (props) => {
         <i>Love</i>
         <i>Comment</i>
       </div>
-      <div className="comment-list">
-        {comments.map(comment => (
-          <p><strong>{comment.username}</strong> {comment.text}</p>
-        ))}
-      </div>
+      <CommentSection comments={comments} />
       <div className="timestamp">
         <small>{timestamp}</small>
       </div>
