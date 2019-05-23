@@ -7,7 +7,7 @@ const CommentSection = (props) => {
     <div className="comment-list">
       {comments.map(comment => (
         <p>
-          <strong>{comment.username}</strong>
+          <span className="bold">{comment.username}</span>{` `}
           {comment.text}
         </p>
       ))}

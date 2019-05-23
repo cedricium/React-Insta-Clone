@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.css'
 
 import CommentSection from '../CommentSection'
 
@@ -33,9 +34,9 @@ const PostMeta = (props) => {
   return (
     <footer className="post-footer">
       <div className="meta">
-        <p>{likes} likes</p>
         <i>Love</i>
         <i>Comment</i>
+        <p><span className="bold">{likes} likes</span></p>
       </div>
       <CommentSection comments={comments} />
       <div className="timestamp">
@@ -56,7 +57,7 @@ const PostContainer = ({ post }) => {
   } = post
 
   return (
-    <div className="post">
+    <article className="post">
       <PostHeader
         thumbnailUrl={thumbnailUrl}
         username={username}
@@ -67,7 +68,7 @@ const PostContainer = ({ post }) => {
         comments={comments}
         timestamp={timestamp}
       />
-    </div>
+    </article>
   )  
 }
 
