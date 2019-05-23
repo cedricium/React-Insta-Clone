@@ -49,3 +49,7 @@
 .posts-list .post .post-footer small {
   color: #666666;
 }
+
+.posts-list .post .post-footer .meta .icon {
+  margin-right: 1rem;
+}

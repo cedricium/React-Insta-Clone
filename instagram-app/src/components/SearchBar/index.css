@@ -19,6 +19,25 @@
   align-items: center;
 }
 
+.search-bar .container .logo span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar .container .logo span .divider {
+  background-color: #262626;
+  height: 28px;
+  margin: 0 16px;
+  width: 1px;
+}
+
+.search-bar .container .logo span img {
+  width: 100%;
+  max-width: 100px;
+}
+
+
 .search-bar .container .search-input input {
   width: 215px;
   height: 25px;
@@ -32,4 +51,16 @@
 
 .search-bar .container .search-input input:focus {
   text-align: left;
+}
+
+
+.search-bar .container .menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar .container .menu a {
+  color: #000000;
+  margin-left: 2rem;
 }

@@ -1,19 +1,22 @@
 import React from 'react';
 
+import {
+  Compass,
+  Heart,
+  User
+} from 'react-feather'
+
 const Menu = () => {
   return (
     <div className="menu">
       <a href="">
-        Explore
-        <i></i>
+        <Compass size="28" strokeWidth="1" />
       </a>
       <a href="">
-        Activity
-        <i></i>
+        <Heart size="28" strokeWidth="1" />
       </a>
       <a href="">
-        Account
-        <i></i>
+        <User size="28" strokeWidth="1" />
       </a>
     </div>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import './index.css'
 
+import { Heart, MessageCircle } from 'react-feather'
 import CommentSection from '../CommentSection'
 
 const PostHeader = (props) => {
@@ -34,8 +35,8 @@ const PostMeta = (props) => {
   return (
     <footer className="post-footer">
       <div className="meta">
-        <i>Love</i>
-        <i>Comment</i>
+        <Heart className="icon" size="28" strokeWidth="1" />
+        <MessageCircle className="icon" size="28" strokeWidth="1" />
         <p><span className="bold">{likes} likes</span></p>
       </div>
       <CommentSection comments={comments} />
