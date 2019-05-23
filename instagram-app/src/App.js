@@ -4,9 +4,11 @@ import './App.css';
 import dummyData from './dummy-data'
 
 import SearchBar from './components/SearchBar'
+import PostContainer from './components/PostContainer'
 
 class App extends React.Component {
-  construtor() {
+  constructor() {
+    super()
     this.state = {
       posts: []
     }
@@ -21,8 +23,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-
         <SearchBar />
+        <main className="posts-list">
+          {this.state.posts.map(post => (
+            <PostContainer key={post.timestamp} post={post} />
+          ))}
+        </main>
       </div>
     )
   }
