@@ -9,13 +9,13 @@ import {
 const Menu = () => {
   return (
     <div className="menu">
-      <a href="">
+      <a href="#explore">
         <Compass size="28" strokeWidth="1" />
       </a>
-      <a href="">
+      <a href="#activity">
         <Heart size="28" strokeWidth="1" />
       </a>
-      <a href="">
+      <a href="#account">
         <User size="28" strokeWidth="1" />
       </a>
     </div>

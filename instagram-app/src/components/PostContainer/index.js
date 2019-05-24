@@ -29,7 +29,7 @@ const PostImage = (props) => {
 
   return (
     <main className="post-image">
-      <img src={imageUrl} alt="instagram photo" />
+      <img src={imageUrl} alt="Description not available" />
     </main>
   )
 }
