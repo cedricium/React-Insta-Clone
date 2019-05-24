@@ -1,11 +1,14 @@
 import React from 'react'
-import './index.css'
+import PropTypes from 'prop-types'
 
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import relativeTime from 'dayjs/plugin/relativeTime'
+
 import { Heart, MessageCircle } from 'react-feather'
 import CommentSection from '../CommentSection'
+
+import './index.css'
 
 dayjs.extend(customParseFormat)
 dayjs.extend(relativeTime)
@@ -80,6 +83,17 @@ const PostContainer = ({ post }) => {
       />
     </article>
   )  
+}
+
+PostContainer.propTypes = {
+  post: PropTypes.shape({
+    username: PropTypes.string,
+    thumbnailUrl: PropTypes.string,
+    imageUrl: PropTypes.string,
+    likes: PropTypes.number,
+    timestamp: PropTypes.string,
+    comments: PropTypes.array,
+  })
 }
 
 export default PostContainer

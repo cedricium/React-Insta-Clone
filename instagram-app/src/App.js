@@ -7,11 +7,8 @@ import SearchBar from './components/SearchBar'
 import PostContainer from './components/PostContainer'
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      posts: []
-    }
+  state = {
+    posts: []
   }
 
   componentDidMount() {
