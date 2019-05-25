@@ -51,19 +51,25 @@
   background: #fafafa;
   border-radius: 3px;
   border: 1px solid #dbdbdb;
-  text-align: center;
   font-size: 14px;
   padding: 0 5px;
+}
+
+.search-bar .container .search-input input,
+.search-bar .container .search-input input::placeholder {
+  text-indent: calc(50% - 2rem);
+  transition: text-indent 0.15s ease 0s;
+}
+
+.search-bar .container .search-input input:focus,
+.search-bar .container .search-input input:focus::placeholder { /* Chrome/Opera/Safari */
+  text-indent: 0;
 }
 
 @media (max-width: 500px) {
   .search-bar .container .search-input {
     display: none;
   }
-}
-
-.search-bar .container .search-input input:focus {
-  text-align: left;
 }
 
 

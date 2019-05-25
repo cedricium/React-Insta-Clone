@@ -41,6 +41,11 @@
 
 .posts-list .post .post-image { display: flex; }
 
+.posts-list .post .post-image img {
+  width: 100%;
+  height: 100%;
+}
+
 .posts-list .post .post-footer {
   font-size: 14px;
   padding: 0.5rem 1rem;
