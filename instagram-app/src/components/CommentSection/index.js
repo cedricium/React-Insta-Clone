@@ -12,14 +12,27 @@ const Comment = (props) => {
   )
 }
 
+const CommentForm = () => {
+  return (
+    <form onSubmit={null}>
+      <input
+        placeholder="Add a comment…"
+        name="comment"
+        onChange={null}
+      />
+    </form>
+  )
+}
+
 const CommentSection = (props) => {
   const { comments } = props
 
   return (
     <div className="comment-list">
-      {comments.map(comment => (
-        <Comment key={Math.random()} comment={comment} />
+      {comments.map((comment, index) => (
+        <Comment key={index} comment={comment} />
       ))}
+      <CommentForm />
     </div>
   )
 }

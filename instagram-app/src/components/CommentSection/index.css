@@ -1,3 +1,19 @@
 .comment-list p {
   margin: 0 0 0.5rem;
 }
+
+.comment-list form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 0.8rem 0;
+  border-top: solid 1px #e6e6e6;
+}
+
+.comment-list form input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 0;
+}
