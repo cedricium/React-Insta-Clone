@@ -12,29 +12,72 @@ const Comment = (props) => {
   )
 }
 
-const CommentForm = () => {
+const CommentForm = (props) => {
+  const { comment, addNewComment, handleChange } = props
   return (
-    <form onSubmit={null}>
+    <form onSubmit={addNewComment}>
       <input
-        placeholder="Add a comment…"
+        type="text"
         name="comment"
-        onChange={null}
+        placeholder="Add a comment…"
+        value={comment}
+        onChange={handleChange}
       />
     </form>
   )
 }
 
-const CommentSection = (props) => {
-  const { comments } = props
+class CommentSection extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      comment: '',
+      comments: [],
+    }
+    this.addNewComment = this.addNewComment.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-  return (
-    <div className="comment-list">
-      {comments.map((comment, index) => (
-        <Comment key={index} comment={comment} />
-      ))}
-      <CommentForm />
-    </div>
-  )
+  componentDidMount() {
+    this.setState({
+      comments: this.props.comments,
+    })
+  }
+
+  addNewComment(event, index) {
+    event.preventDefault()
+    const newComment = {
+      username: 'cedricium',
+      text: this.state.comment,
+    }
+    const newComments = this.state.comments.slice()
+    newComments.push(newComment)
+    this.setState({
+      comment: '',
+      comments: newComments,
+    })
+  }
+
+  handleChange(event) {
+    this.setState({
+      comment: event.target.value,
+    })
+  }
+
+  render() {
+    return (
+      <div className="comment-list">
+        {this.state.comments.map((comment, index) => (
+          <Comment key={index} comment={comment} />
+        ))}
+        <CommentForm
+          comment={this.state.comment}
+          addNewComment={this.addNewComment}
+          handleChange={this.handleChange}
+        />
+      </div>
+    )
+  }
 }
 
 Comment.propTypes = {
