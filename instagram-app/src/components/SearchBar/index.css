@@ -58,7 +58,7 @@
 
 .search-bar .container .search-input input, /* Firefox does not respect `text-indent` with ::placeholder */
 .search-bar .container .search-input input::placeholder { /* All other browsers (for the most part */
-  text-indent: calc(50% - 2rem);
+  text-indent: calc(50% - 1.75rem);
   transition: text-indent 0.15s ease 0s;
 }
 
