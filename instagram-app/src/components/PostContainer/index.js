@@ -38,7 +38,8 @@ const PostMeta = (props) => {
   const {
     likes,
     comments,
-    timestamp
+    timestamp,
+    handleLikeClick,
   } = props
 
   const postedTime = dayjs(timestamp, 'MMMM Do YYYY, hh:mm:ss a')
@@ -47,7 +48,7 @@ const PostMeta = (props) => {
   return (
     <footer className="post-footer">
       <div className="meta">
-        <Heart className="icon" size="28" strokeWidth="1" />
+        <Heart className="icon" size="28" strokeWidth="1" onClick={handleLikeClick} />
         <MessageCircle className="icon" size="28" strokeWidth="1" />
         <p><span className="bold">{likes} likes</span></p>
       </div>
@@ -59,30 +60,52 @@ const PostMeta = (props) => {
   )
 }
 
-const PostContainer = ({ post }) => {
-  const {
-    username,
-    thumbnailUrl,
-    imageUrl,
-    likes,
-    timestamp,
-    comments,
-  } = post
+class PostContainer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      post: this.props.post
+    }
+    this.handleLikeClick = this.handleLikeClick.bind(this)
+  }
 
-  return (
-    <article className="post">
-      <PostHeader
-        thumbnailUrl={thumbnailUrl}
-        username={username}
-      />
-      <PostImage imageUrl={imageUrl} />
-      <PostMeta
-        likes={likes}
-        comments={comments}
-        timestamp={timestamp}
-      />
-    </article>
-  )  
+  componentDidMount() {
+    this.setState({ post: this.props.post })
+  }
+
+  handleLikeClick() {
+    console.log('is this working??')
+    this.setState({
+      post: { ...this.state.post, likes: this.state.post.likes + 1 }
+    })
+  }
+  
+  render() {
+    const {
+      username,
+      thumbnailUrl,
+      imageUrl,
+      likes,
+      timestamp,
+      comments,
+    } = this.state.post
+    
+    return (
+      <article className="post">
+        <PostHeader
+          thumbnailUrl={thumbnailUrl}
+          username={username}
+        />
+        <PostImage imageUrl={imageUrl} />
+        <PostMeta
+          likes={likes}
+          comments={comments}
+          timestamp={timestamp}
+          handleLikeClick={this.handleLikeClick}
+        />
+      </article>
+    )
+  }
 }
 
 PostContainer.propTypes = {
