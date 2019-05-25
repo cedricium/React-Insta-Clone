@@ -8,21 +8,36 @@ import PostContainer from './components/PostContainer'
 
 class App extends React.Component {
   state = {
-    posts: []
+    search: '',
+    posts: [],
+    filteredPosts: [],
   }
 
   componentDidMount() {
     this.setState({
-      posts: dummyData
+      posts: dummyData,
+      filteredPosts: dummyData,
+    })
+    this.handleSearchChange = this.handleSearchChange.bind(this)
+  }
+
+  handleSearchChange(event) {
+    const searchTerm = event.target.value
+    const matchingPosts =
+      this.state.posts.slice().filter(post => post.username.includes(searchTerm))
+
+    this.setState({
+      search: searchTerm,
+      filteredPosts: matchingPosts
     })
   }
 
   render() {
     return (
       <div className="App">
-        <SearchBar />
+        <SearchBar search={this.state.search} handleSearchChange={this.handleSearchChange} />
         <main className="posts-list">
-          {this.state.posts.map(post => (
+          {this.state.filteredPosts.map(post => (
             <PostContainer key={post.timestamp} post={post} />
           ))}
         </main>

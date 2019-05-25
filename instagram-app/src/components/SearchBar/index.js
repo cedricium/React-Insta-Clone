@@ -5,12 +5,12 @@ import Logo from './Logo'
 import Search from './Search'
 import Menu from './Menu'
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   return (
     <header className="search-bar">
       <div className="container">
         <Logo />
-        <Search />
+        <Search search={props.search} handleSearchChange={props.handleSearchChange} />
         <Menu />
       </div>
     </header>
