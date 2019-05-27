@@ -37,8 +37,8 @@ class App extends React.Component {
       <div className="App">
         <SearchBar search={this.state.search} handleSearchChange={this.handleSearchChange} />
         <main className="posts-list">
-          {this.state.filteredPosts.map(post => (
-            <PostContainer key={post.timestamp} post={post} />
+          {this.state.filteredPosts.map((post, index) => (
+            <PostContainer key={index} post={post} id={index} />
           ))}
         </main>
       </div>

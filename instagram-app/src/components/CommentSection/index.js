@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './index.css'
 
+import { saveToLocalStorage, fetchFromLocalStorage } from '../../utils/localStorage'
+
 const Comment = (props) => {
   const { comment } = props
   return (
@@ -36,12 +38,35 @@ class CommentSection extends React.Component {
     }
     this.addNewComment = this.addNewComment.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.saveData = this.saveData.bind(this)
+    this.fetchData = this.fetchData.bind(this)
   }
 
   componentDidMount() {
-    this.setState({
-      comments: this.props.comments,
-    })
+    window.addEventListener('load', this.fetchData)
+    window.addEventListener('unload', this.saveData)
+  }
+
+  componentWillUnmount() {
+    window.addEventListener('load', this.fetchData)
+    window.addEventListener('unload', this.saveData)
+  }
+
+  saveData() {
+    saveToLocalStorage(this.props.id, this.state.comments)
+  }
+
+  fetchData() {
+    const persistedData = fetchFromLocalStorage(this.props.id)
+    if (persistedData !== null) {
+      this.setState({
+        comments: persistedData
+      })
+    } else {
+      this.setState({
+        comments: this.props.comments
+      })
+    }
   }
 
   addNewComment(event, index) {

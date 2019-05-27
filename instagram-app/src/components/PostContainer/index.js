@@ -36,6 +36,7 @@ const PostImage = (props) => {
 
 const PostMeta = (props) => {
   const {
+    id,
     likes,
     comments,
     timestamp,
@@ -52,7 +53,7 @@ const PostMeta = (props) => {
         <MessageCircle className="icon" size="28" strokeWidth="1" />
         <p><span className="bold">{likes} likes</span></p>
       </div>
-      <CommentSection comments={comments} />
+      <CommentSection id={id} comments={comments} />
       <div className="timestamp">
         <small>{postedTimeFromNow}</small>
       </div>
@@ -64,6 +65,7 @@ class PostContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: this.props.id,
       post: this.props.post
     }
     this.handleLikeClick = this.handleLikeClick.bind(this)
@@ -74,13 +76,13 @@ class PostContainer extends React.Component {
   }
 
   handleLikeClick() {
-    console.log('is this working??')
     this.setState({
       post: { ...this.state.post, likes: this.state.post.likes + 1 }
     })
   }
   
   render() {
+    const { id } = this.state
     const {
       username,
       thumbnailUrl,
@@ -98,6 +100,7 @@ class PostContainer extends React.Component {
         />
         <PostImage imageUrl={imageUrl} />
         <PostMeta
+          id={id}
           likes={likes}
           comments={comments}
           timestamp={timestamp}
@@ -109,6 +112,7 @@ class PostContainer extends React.Component {
 }
 
 PostContainer.propTypes = {
+  id: PropTypes.number,
   post: PropTypes.shape({
     username: PropTypes.string,
     thumbnailUrl: PropTypes.string,
