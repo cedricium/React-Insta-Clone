@@ -66,18 +66,14 @@ class PostContainer extends React.Component {
     super(props)
     this.state = {
       id: this.props.id,
-      post: this.props.post
+      likes: this.props.post.likes,
     }
     this.handleLikeClick = this.handleLikeClick.bind(this)
   }
 
-  componentDidMount() {
-    this.setState({ post: this.props.post })
-  }
-
   handleLikeClick() {
     this.setState({
-      post: { ...this.state.post, likes: this.state.post.likes + 1 }
+      likes: this.state.likes + 1
     })
   }
   
@@ -87,10 +83,9 @@ class PostContainer extends React.Component {
       username,
       thumbnailUrl,
       imageUrl,
-      likes,
       timestamp,
       comments,
-    } = this.state.post
+    } = this.props.post
     
     return (
       <article className="post">
@@ -101,7 +96,7 @@ class PostContainer extends React.Component {
         <PostImage imageUrl={imageUrl} />
         <PostMeta
           id={id}
-          likes={likes}
+          likes={this.state.likes}
           comments={comments}
           timestamp={timestamp}
           handleLikeClick={this.handleLikeClick}
