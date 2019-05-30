@@ -35,6 +35,7 @@ class CommentSection extends React.Component {
     this.state = {
       comment: '',
       comments: [],
+      username: JSON.parse(localStorage.getItem('auth')).username,
     }
     this.addNewComment = this.addNewComment.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -72,7 +73,7 @@ class CommentSection extends React.Component {
   addNewComment(event, index) {
     event.preventDefault()
     const newComment = {
-      username: 'cedricium',
+      username: this.state.username,
       text: this.state.comment,
     }
     const newComments = this.state.comments.slice()
