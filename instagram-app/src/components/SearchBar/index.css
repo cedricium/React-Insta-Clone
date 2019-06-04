@@ -1,0 +1,87 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 75px;
+  border-bottom: 1px solid #e6e6e6;
+  background: #ffffff;
+}
+
+.search-bar .container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar .container .logo span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar .container .logo span .divider {
+  background-color: #262626;
+  height: 28px;
+  margin: 0 16px;
+  width: 1px;
+}
+
+.search-bar .container .logo span img {
+  width: 100%;
+  max-width: 100px;
+}
+
+.search-bar .container .search-input {
+  width: 30%;
+}
+
+
+.search-bar .container .search-input input {
+  width: 100%;
+  height: 25px;
+  background: #fafafa;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #dbdbdb;
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+.search-bar .container .search-input input, /* Firefox does not respect `text-indent` with ::placeholder */
+.search-bar .container .search-input input::placeholder { /* All other browsers (for the most part */
+  text-indent: calc(50% - 1.75rem);
+  transition: text-indent 0.15s ease 0s;
+}
+
+.search-bar .container .search-input input:focus, /* Firefox does not respect `text-indent` with ::placeholder */
+.search-bar .container .search-input input:focus::placeholder, /* All other browsers (for the most part */
+.search-bar .container .search-input input:not(:placeholder-shown) { /* prevent non-focused non-empty input from being indented */
+  text-indent: 0;
+}
+
+@media (max-width: 500px) {
+  .search-bar .container .search-input {
+    display: none;
+  }
+}
+
+
+.search-bar .container .menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar .container .menu a {
+  color: #000000;
+  margin-left: 2rem;
+}
